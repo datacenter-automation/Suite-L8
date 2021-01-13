@@ -30,4 +30,26 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'telegram-bot-api' => [
+	'token' => env('TELEGRAM_BOT_TOKEN', 'YOUR BOT TOKEN HERE')
+    ],
+
+
+    'facebook' => [
+	'page-token' => env('FACEBOOK_PAGE_TOKEN', 'YOUR PAGE TOKEN HERE'),
+
+	// Optional - Omit this if you want to use default version.
+	'version'    => env('FACEBOOK_GRAPH_API_VERSION', '4.0'),
+
+	// Optional - If set, the appsecret_proof will be sent to verify your page-token.
+	'app-secret' => env('FACEBOOK_APP_SECRET', ''),
+    ],
+
+    'twitter' => [
+    	'consumer_key'    => env('TWITTER_CONSUMER_KEY'),
+    	'consumer_secret' => env('TWITTER_CONSUMER_SECRET'),
+    	'access_token'    => env('TWITTER_ACCESS_TOKEN'),
+    	'access_secret'   => env('TWITTER_ACCESS_SECRET')
+    ],
+
 ];

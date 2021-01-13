@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+	NotificationChannels\Discord\DiscordServiceProvider::class,
 
         /*
          * Application Service Providers...
