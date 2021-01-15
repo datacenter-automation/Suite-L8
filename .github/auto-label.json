@@ -1,0 +1,6 @@
+{
+  "rules": {
+    "frontend": ["*.js", "*.css", "*.blade.php"],
+    "backend": ["app/", "*.php"]
+  }
+}

@@ -1,0 +1,77 @@
+---
+-
+  color: d73a4a
+  description: "Something isn't working"
+  name: bug
+-
+  color: cfd3d7
+  description: "This issue or pull request already exists"
+  name: duplicate
+-
+  color: a2eeef
+  description: "New feature or request"
+  name: enhancement
+-
+  color: 7057ff
+  description: "Good for newcomers"
+  name: "good first issue"
+-
+  color: 008672
+  description: "Extra attention is needed"
+  name: "help wanted"
+-
+  color: e4e669
+  description: "This doesn't seem right"
+  name: invalid
+-
+  color: d876e3
+  description: "Further information is requested"
+  name: question
+-
+  color: ffffff
+  description: "This will not be worked on"
+  name: wontfix
+-
+  color: dce775
+  description: ""
+  name: build
+-
+  color: dce775
+  description: "Pull requests that update a dependency file"
+  name: dependencies
+-
+  color: dce775
+  description: ""
+  name: documentation
+-
+  color: 64b5f6
+  description: ""
+  name: performance
+-
+  color: e57373
+  description: ""
+  name: security
+-
+  color: f7ae7e
+  description: ""
+  name: upstream
+-
+  color: e0e0e0
+  description: ""
+  name: blocked
+-
+  color: 555555
+  description: "Bot locked issue or PR"
+  name: locked
+-
+  color: a1887f
+  description: "Linux-specific issue"
+  name: linux
+-
+  color: a1887f
+  description: "macOS-specific issue"
+  name: macos
+-
+  color: a1887f
+  description: "Windows-specific issue"
+  name: windows
