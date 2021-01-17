@@ -15,7 +15,31 @@ module.exports = {
         extend: {
             opacity: ['disabled'],
         },
+
     },
 
-    plugins: [require('@tailwindcss/forms')],
+    plugins: [
+	require('@tailwindcss/forms'),
+	require('tailwindcss-elevation')(['responsive']),
+	require('tailwindcss-flexbox-order')(),
+        require('tailwindcss-typography')({
+                ellipsis: true,
+                hyphens: true,
+                kerning: true,
+                textUnset: true,
+                componentPrefix: 'c-',
+        }),
+        require('@tailwindcss/custom-forms'),
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/line-clamp'),
+        require('tailwindcss-scroll-snap'),
+        require('tailwindcss-image-rendering')(),
+        require('tailwindcss-writing-mode')({
+                variants: ['responsive', 'hover']
+        }),
+        require("tailwindcss-hyphens"),
+        require('tailwindcss-tooltip-arrow-after')(),
+        require('tailwindcss-dir')(),
+        require('tailwindcss-touch')(),
+    ],
 };
