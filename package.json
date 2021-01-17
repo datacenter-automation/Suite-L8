@@ -19,5 +19,23 @@
         "postcss": "^8.2.1",
         "postcss-import": "^12.0.1",
         "tailwindcss": "^2.0.2"
+    },
+    "dependencies": {
+        "@tailwindcss/custom-forms": "^0.2.1",
+        "@tailwindcss/line-clamp": "^0.1.0",
+        "heroicons": "^0.4.2",
+        "material-icons": "^0.5.2",
+        "tailwindcss-dir": "^4.0.0",
+        "tailwindcss-elevation": "^1.0.1",
+        "tailwindcss-flexbox-order": "^1.1.0",
+        "tailwindcss-hyphens": "^0.1.0",
+        "tailwindcss-image-rendering": "^1.0.2",
+        "tailwindcss-localized": "^1.0.0",
+        "tailwindcss-scroll-snap": "^1.0.3",
+        "tailwindcss-tooltip-arrow-after": "^1.0.0",
+        "tailwindcss-touch": "^1.0.1",
+        "tailwindcss-truncate-multiline": "^1.0.3",
+        "tailwindcss-typography": "^3.1.0",
+        "tailwindcss-writing-mode": "^1.0.0"
     }
 }
