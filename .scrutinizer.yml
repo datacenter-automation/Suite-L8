@@ -1,0 +1,59 @@
+build:
+  nodes:
+    php71:
+      environment:
+        php: 7.4
+  cache:
+    directories:
+      - node_modules/
+      - vendor/
+      - ~/.composer/cache/
+
+filter:
+  excluded_paths:
+    - vendor/*
+    - tests/*
+
+tools:
+  external_code_coverage:
+    timeout: 1800
+
+  php_changetracking: true
+
+  php_loc:
+    excluded_dirs:
+      - vendor
+
+  php_mess_detector:
+    filter:
+      excluded_paths: ['public/apc.php']
+
+  php_cpd: true
+  php_pdepend:
+    excluded_dirs: [vendor]
+
+  php_analyzer: true
+
+  php_cs_fixer:
+    enabled:              true
+    config:
+      level:                psr2
+      fixers:               []
+
+checks:
+  php:
+    code_rating: true
+    duplication: true
+    remove_extra_empty_lines: true
+    remove_php_closing_tag: true
+    remove_trailing_whitespace: true
+    fix_use_statements:
+      remove_unused: true
+      preserve_multiple: false
+      preserve_blanklines: true
+      order_alphabetically: true
+    fix_php_opening_tag: true
+    fix_linefeed: true
+    fix_line_ending: true
+    fix_identation_4spaces: true
+    fix_doc_comments: true

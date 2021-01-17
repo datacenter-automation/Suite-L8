@@ -1,0 +1,16 @@
+# Always use color
+--color
+
+# Ignore PhpStorm and NPM
+--ignore-dir=.idea/
+--ignore-dir=node_modules/
+
+# Add to existing types
+--type-add=ruby:ext:haml,rake,rsel
+
+# Add new types
+--type-set=smarty:ext:tpl
+--type-set=cakeview:ext:ctp,thtml
+--type-set=markdown:ext:md,markdown
+--type-set=json:ext:json
+--type-set=blade:match:.blade.php$

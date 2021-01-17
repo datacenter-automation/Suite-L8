@@ -1,0 +1,25 @@
+{
+  "bootstrap": "vendor/autoload.php",
+  "path": "tests/Benchmarks",
+  "progress": "dots",
+  "retry_threshold": 10,
+  "reports": {
+    "default_report": {
+      "extends": "aggregate"
+    }
+  },
+  "outputs": {
+    "default_output": {
+      "renderer": "console",
+      "table_style": "symfony-style-guide",
+      "title": "PHP Bench Report"
+    },
+    "html_output": {
+      "renderer": "xslt",
+      "title": "PHP Bench Report"
+    }
+  },
+  "subject_pattern": "^fiberhop",
+  "time_unit": "seconds",
+  "output_mode": "throughput"
+}
