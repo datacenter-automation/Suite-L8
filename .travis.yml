@@ -8,11 +8,11 @@ matrix:
 
 addons:
   hosts:
-    - suite-l6.local
+    - suite-l8.local
 
 branches:
   only:
-    - master
+    - main
     - /^deploy-.*$/
     - initial
 
@@ -29,7 +29,7 @@ env:
 
 before_install:
   - sudo apt-get -qq update
-  - mysql -e 'CREATE DATABASE dcas_l6;'
+  - mysql -e 'CREATE DATABASE dcas_l8;'
   - phpenv config-rm xdebug.ini || true
   - printf "\n" | pecl install -f redis
 
@@ -39,7 +39,6 @@ before_script:
   - travis_retry composer install --dev --prefer-source --no-interaction
   - npm install
   - php artisan migrate
-  - yarn danger ci
 
 script:
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
