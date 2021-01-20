@@ -27,7 +27,7 @@
         "axios": "^0.21",
         "heroicons": "^0.4.2",
         "material-icons": "^0.5.2",
-        "tailwindcss": "^2.0.2"
+        "tailwindcss": "^2.0.2",
         "tailwindcss-dir": "^4.0.0",
         "tailwindcss-elevation": "^1.0.1",
         "tailwindcss-flexbox-order": "^1.1.0",
