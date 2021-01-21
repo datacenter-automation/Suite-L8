@@ -6,6 +6,7 @@ use Spatie\QueueableAction\QueueableAction;
 
 class MyAction
 {
+
     use QueueableAction;
 
     /**

@@ -17,4 +17,4 @@ Route::view('/', 'welcome');
 
 Route::view('/dashboard', 'dashboard')->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

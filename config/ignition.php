@@ -1,5 +1,7 @@
 <?php
 
+use Facade\Ignition\SolutionProviders\MissingPackageSolutionProvider;
+
 return [
 
     /*
@@ -55,7 +57,7 @@ return [
     | You can enable the command registration below.
     |
     */
-    'register_commands' => env('REGISTER_IGNITION_COMMANDS', false),
+    'register_commands'   => env('REGISTER_IGNITION_COMMANDS', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -69,7 +71,7 @@ return [
     */
 
     'ignored_solution_providers' => [
-        \Facade\Ignition\SolutionProviders\MissingPackageSolutionProvider::class,
+        MissingPackageSolutionProvider::class,
     ],
 
     /*
@@ -108,8 +110,8 @@ return [
     |
     */
 
-    'remote_sites_path' => env('IGNITION_REMOTE_SITES_PATH', ''),
-    'local_sites_path' => env('IGNITION_LOCAL_SITES_PATH', ''),
+    'remote_sites_path'            => env('IGNITION_REMOTE_SITES_PATH', ''),
+    'local_sites_path'             => env('IGNITION_LOCAL_SITES_PATH', ''),
 
     /*
     |--------------------------------------------------------------------------

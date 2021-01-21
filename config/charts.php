@@ -14,7 +14,7 @@ return [
     | a specific route prefix to each individual chart that will be applied after this.
     |
     */
-    'global_route_prefix' => 'api/chart',
+    'global_route_prefix'      => 'api/chart',
 
     /*
     |--------------------------------------------------------------------------
@@ -28,7 +28,7 @@ return [
     | choice rather than applying it individually to each chart.
     |
     */
-    'global_middlewares' => ['web'],
+    'global_middlewares'       => ['web'],
 
     /*
     |--------------------------------------------------------------------------

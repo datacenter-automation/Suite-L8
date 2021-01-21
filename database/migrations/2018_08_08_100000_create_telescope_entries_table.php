@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateTelescopeEntriesTable extends Migration
 {
+
     /**
      * The database schema.
      *
@@ -64,10 +65,7 @@ class CreateTelescopeEntriesTable extends Migration
             $table->index(['entry_uuid', 'tag']);
             $table->index('tag');
 
-            $table->foreign('entry_uuid')
-                  ->references('uuid')
-                  ->on('telescope_entries')
-                  ->onDelete('cascade');
+            $table->foreign('entry_uuid')->references('uuid')->on('telescope_entries')->onDelete('cascade');
         });
 
         $this->schema->create('telescope_monitoring', function (Blueprint $table) {
