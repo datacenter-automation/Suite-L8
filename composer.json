@@ -50,6 +50,7 @@
         "behat/behat": "^3.8",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "laracasts/cypress": "^1.3",
         "laravel/dusk": "^6.11",
         "laravel/envoy": "^2.5",
         "laravel/horizon": "^5.6",

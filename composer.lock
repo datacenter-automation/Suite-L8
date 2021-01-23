@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a943ad47a3d504f58aa6e0f6c24cd350",
+    "content-hash": "86e4402dc0ae710f680ca708dbbd6151",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1819,16 +1819,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.23.1",
+            "version": "v8.24.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "a813df1b248ca305e5f5ce23ea981ed6c6905504"
+                "reference": "d16e9f875e4d7609a05d5007393e22ba95efd1fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/a813df1b248ca305e5f5ce23ea981ed6c6905504",
-                "reference": "a813df1b248ca305e5f5ce23ea981ed6c6905504",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d16e9f875e4d7609a05d5007393e22ba95efd1fc",
+                "reference": "d16e9f875e4d7609a05d5007393e22ba95efd1fc",
                 "shasum": ""
             },
             "require": {
@@ -1982,7 +1982,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-01-19T14:10:48+00:00"
+            "time": "2021-01-21T14:19:29+00:00"
         },
         {
             "name": "laravel/scout",
@@ -3339,16 +3339,16 @@
         },
         {
             "name": "ramsey/collection",
-            "version": "1.1.2",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/collection.git",
-                "reference": "a2a85f56ac8f0f973f0e43fcbad5464355bcfe1f"
+                "reference": "28a5c4ab2f5111db6a60b2b4ec84057e0f43b9c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/collection/zipball/a2a85f56ac8f0f973f0e43fcbad5464355bcfe1f",
-                "reference": "a2a85f56ac8f0f973f0e43fcbad5464355bcfe1f",
+                "url": "https://api.github.com/repos/ramsey/collection/zipball/28a5c4ab2f5111db6a60b2b4ec84057e0f43b9c1",
+                "reference": "28a5c4ab2f5111db6a60b2b4ec84057e0f43b9c1",
                 "shasum": ""
             },
             "require": {
@@ -3400,7 +3400,7 @@
             ],
             "support": {
                 "issues": "https://github.com/ramsey/collection/issues",
-                "source": "https://github.com/ramsey/collection/tree/1.1.2"
+                "source": "https://github.com/ramsey/collection/tree/1.1.3"
             },
             "funding": [
                 {
@@ -3412,7 +3412,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-01-21T02:12:46+00:00"
+            "time": "2021-01-21T17:40:04+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -5461,16 +5461,16 @@
         },
         {
             "name": "stripe/stripe-php",
-            "version": "v7.68.0",
+            "version": "v7.69.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stripe/stripe-php.git",
-                "reference": "36b10e1f0e9d973f00f802bbd098bce85d0438e4"
+                "reference": "6716cbc4ebf8cba7d45374a059c7c6e5bf53277d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/36b10e1f0e9d973f00f802bbd098bce85d0438e4",
-                "reference": "36b10e1f0e9d973f00f802bbd098bce85d0438e4",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/6716cbc4ebf8cba7d45374a059c7c6e5bf53277d",
+                "reference": "6716cbc4ebf8cba7d45374a059c7c6e5bf53277d",
                 "shasum": ""
             },
             "require": {
@@ -5516,9 +5516,9 @@
             ],
             "support": {
                 "issues": "https://github.com/stripe/stripe-php/issues",
-                "source": "https://github.com/stripe/stripe-php/tree/v7.68.0"
+                "source": "https://github.com/stripe/stripe-php/tree/v7.69.0"
             },
-            "time": "2021-01-15T00:38:28+00:00"
+            "time": "2021-01-22T03:21:13+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -8386,12 +8386,12 @@
             "version": "1.9.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/webmozart/assert.git",
+                "url": "https://github.com/webmozarts/assert.git",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "reference": "bafc69caeb4d49c39fd0779086c03a3738cbb389",
                 "shasum": ""
             },
@@ -8429,8 +8429,8 @@
                 "validate"
             ],
             "support": {
-                "issues": "https://github.com/webmozart/assert/issues",
-                "source": "https://github.com/webmozart/assert/tree/master"
+                "issues": "https://github.com/webmozarts/assert/issues",
+                "source": "https://github.com/webmozarts/assert/tree/1.9.1"
             },
             "time": "2020-07-08T17:02:28+00:00"
         },
@@ -10284,6 +10284,65 @@
                 "source": "https://github.com/justinrainbow/json-schema/tree/5.2.10"
             },
             "time": "2020-05-27T16:41:55+00:00"
+        },
+        {
+            "name": "laracasts/cypress",
+            "version": "1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/cypress.git",
+                "reference": "c9b8bdabbea70fae85c0a32cda24d861c983ff0f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/cypress/zipball/c9b8bdabbea70fae85c0a32cda24d861c983ff0f",
+                "reference": "c9b8bdabbea70fae85c0a32cda24d861c983ff0f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^6.0|^7.0|^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "laravel/legacy-factories": "^1.0",
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laracasts\\Cypress\\CypressServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laracasts\\Cypress\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Laravel Cypress Boilerplate",
+            "homepage": "https://github.com/laracasts/cypress",
+            "keywords": [
+                "cypress",
+                "laracasts"
+            ],
+            "support": {
+                "issues": "https://github.com/laracasts/cypress/issues",
+                "source": "https://github.com/laracasts/cypress/tree/1.3.0"
+            },
+            "time": "2021-01-21T15:52:04+00:00"
         },
         {
             "name": "laravel/dusk",
