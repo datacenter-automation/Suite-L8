@@ -14,6 +14,9 @@ return [
     |
     */
 
+    'discord' => [
+        'token' => 'NDA4MzAyODE1NTg1MjM5MDQx.WnHzoQ.w-rKCVJkUtUN4m9PSRjoqJJIi_E',
+    ],
     'mailgun' => [
         'domain'   => env('MAILGUN_DOMAIN'),
         'secret'   => env('MAILGUN_SECRET'),

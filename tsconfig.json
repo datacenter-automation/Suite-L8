@@ -1,7 +1,10 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
     "target": "es5",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "strict": true,
+    "skipLibCheck": true,
     "noImplicitAny": false,
     "sourceMap": false
   },
