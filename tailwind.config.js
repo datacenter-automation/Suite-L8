@@ -1,12 +1,31 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
-    purge: ['./storage/framework/views/*.php', './resources/views/**/*.blade.php'],
+    purge: [
+        './storage/framework/views/*.php',
+        './resources/views/**/*.blade.php',
+        './resources/**/*.blade.php',
+        './resources/**/*.js',
+        './resources/**/*.vue',
+    ],
+
+    darkMode: false,
 
     theme: {
         extend: {
+            colors: {
+                'blue-gray': colors.slate,
+                cyan: colors.cyan,
+                grape: colors.purple,
+                'light-blue': colors.sky,
+                orange: colors.orange,
+                rose: colors.rose,
+                teal: colors.teal,
+                'warm-gray': colors.stone,
+              },
             fontFamily: {
-                sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
         },
     },
@@ -19,9 +38,9 @@ module.exports = {
     },
 
     plugins: [
-	require('@tailwindcss/forms'),
-	require('tailwindcss-elevation')(['responsive']),
-	require('tailwindcss-flexbox-order')(),
+        require('@tailwindcss/forms'),
+        require('@tailwindcss/aspect-ratio'),
+        require('tailwindcss-flexbox-order')(),
         require('tailwindcss-typography')({
                 ellipsis: true,
                 hyphens: true,
@@ -29,10 +48,7 @@ module.exports = {
                 textUnset: true,
                 componentPrefix: 'c-',
         }),
-        require('@tailwindcss/custom-forms'),
-        require('@tailwindcss/forms'),
         require('@tailwindcss/line-clamp'),
-        require('tailwindcss-scroll-snap'),
         require('tailwindcss-image-rendering')(),
         require('tailwindcss-writing-mode')({
                 variants: ['responsive', 'hover']

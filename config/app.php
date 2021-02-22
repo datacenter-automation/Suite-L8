@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => env('SERVER_TIMEZONE', 'UTC'),
 
     /*
     |--------------------------------------------------------------------------
@@ -124,6 +124,21 @@ return [
     'cipher' => 'AES-256-CBC',
 
     /*
+    |-------------------------------------------
+    | API Version
+    |-------------------------------------------
+    |
+    | This value is the version of your api.
+    | It's used when there's no specified
+    | version on the routes, so it will take this
+    | as the default, or current.
+     */
+
+    'api_version' => env('API_VERSION', null),
+
+    'api_latest' => env('API_LATEST', null),
+
+    /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
@@ -166,17 +181,18 @@ return [
          * Package Service Providers...
          */
         NotificationChannels\Discord\DiscordServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
+        App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
-        App\Providers\HorizonServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\TelescopeServiceProvider::class,
+
+        App\Providers\QueryInspectorServiceProvider::class,
 
     ],
 
@@ -216,6 +232,7 @@ return [
         'Mail'         => Illuminate\Support\Facades\Mail::class,
         'Notification' => Illuminate\Support\Facades\Notification::class,
         'Password'     => Illuminate\Support\Facades\Password::class,
+        'PDF'          => Barryvdh\DomPDF\Facade::class,
         'Queue'        => Illuminate\Support\Facades\Queue::class,
         'Redirect'     => Illuminate\Support\Facades\Redirect::class,
         // 'Redis' => Illuminate\Support\Facades\Redis::class,

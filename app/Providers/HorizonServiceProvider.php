@@ -3,9 +3,11 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Gate;
-use Laravel\Horizon\HorizonApplicationServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
-class HorizonServiceProvider extends HorizonApplicationServiceProvider
+//use Laravel\Horizon\HorizonApplicationServiceProvider;
+
+class HorizonServiceProvider extends ServiceProvider
 {
 
     /**

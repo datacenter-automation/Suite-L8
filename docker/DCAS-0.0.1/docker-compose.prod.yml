@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: nginx.prod.dockerfile
+    depends_on:
+      - mysql
+      - php
+      - assets_composer
+      - assets_node
+      - assets_artisan
+  php:
+    build:
+      context: .
+      dockerfile: php8.prod.dockerfile
+  assets_composer:
+    build:
+      context: .
+      dockerfile: ./composer.dockerfile
+    volumes:
+      - ../../:/var/www/html
+    working_dir: /var/www/html
+    command: ["/bin/sh" "-c" "composer update"]
+  assets_node:
+    image: node:current-alipine
+    volumes:
+      - "../../:/var/www/html"
+    working_dir: /var/www/html
+    command: ["/bin/sh" "-c" "npm install && npm audit fix && npm run production"]
+  assets_artisan:
+    build:
+      context: .
+      dockerfile: ./php8.dockerfile
+    volumes:
+      - "../../:/var/www/html"
+    working_dir: /var/www/html
+    command: ["/bin/sh" "-c" "php artisan migrate --seed"]

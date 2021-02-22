@@ -1,0 +1,14 @@
+name: Add Pull Request Reviewer
+
+# Trigger the workflow on pull request
+on: pull_request
+
+jobs:
+  add_pr_reviewers:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Add Pull Request Reviewer
+      uses: AveryCameronUofR/add-reviewer-gh-action@1.0.3
+      with:
+        reviewers: "AveryCameronUofR"
+        token: ${{ secrets.GITHUB_TOKEN }}

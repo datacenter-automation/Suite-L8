@@ -1,0 +1,14 @@
+on: [push]
+
+jobs:
+  gitlog_job:
+    runs-on: ubuntu-latest
+    name: Gitlog analysis.
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Execute gitlog analysis.
+        id: gitlog
+        uses: hdmsantander/git-log-analyzer-action@v1.0
+        with:
+          min cochanges: 10

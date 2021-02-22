@@ -1,37 +1,22 @@
-models:
-    Ticket:
-        ticket_number: string:255
-        subject: string:256
-        body: longtext
-        owner_id: id:Models\Roles\User
-        softDeletes
-    Comment:
-        ticket_id: id
-        body: longtext
-    Note:
-        ticket_id: id
-        body: longtext
-        owner_id: id:Models\Roles\Internal
-    Feedback:
-        ticket_id: id
-        body: longtext nullable
-        stars: integer
-        owner_id: id:Models\Roles\User
-controllers:
-    Ticket:
-        resource: index, create, store, show, edit, update, destroy
-    Api\Comment:
-        store:
-            validate: ticket_id, body
-            save: comment
-            respond: 204
-    Api\Note:
-        store:
-            validate: ticket_id, body, owner_id
-            save: note
-            respond: 204
-    Api\Feedback:
-        store:
-            validate: ticket_id, body, stars, owner_id
-            save: feedback
-            respond: 204
+# ...
+#models:
+#    Location:
+#        id
+#        location_group_id: id foreign:location_groups nullable
+#        name: string:255 unique index
+#        description: string:255 nullable
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsTo: LocationGroup, Machine
+#
+#    User:
+#        relationships:
+#            hasMany: Machine, Ticket
+#
+#controllers:
+#    # ...
+#    Location:
+#        resource
+
+#seeders: Location

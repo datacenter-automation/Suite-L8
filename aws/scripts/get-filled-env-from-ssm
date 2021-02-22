@@ -1,0 +1,1 @@
+aws ssm get-parameter --with-decryption --name /dcas/staging/env --output text --query Parameter.Value > dcas.staging.env
