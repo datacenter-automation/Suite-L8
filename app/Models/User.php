@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\TableInformation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -59,7 +60,7 @@ use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
 
-    use Billable, HasFactory, HasRoles, Notifiable, Searchable;
+    use Billable, HasFactory, HasRoles, Notifiable, Searchable, TableInformation;
 
     /**
      * The attributes that are mass assignable.
@@ -68,8 +69,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'register_ip',
     ];
 
     /**
@@ -79,7 +82,10 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'forget_token',
+        'active_token',
         'remember_token',
+        'salt',
     ];
 
     /**

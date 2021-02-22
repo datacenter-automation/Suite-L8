@@ -9,11 +9,15 @@
 
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
+  <x-laravel-blade-sortable::scripts/>
+
   <script src="{{ mix('js/app.js') }}"></script>
 </head>
 <body class="font-sans antialiased" div="app">
@@ -32,5 +36,11 @@
     {{ $slot }}
   </main>
 </div>
+
+<div>
+  {{ dd((new \App\Models\User)->columns()) }}
+</div>
+
+@stack('scripts')
 </body>
 </html>
