@@ -1,44 +1,31 @@
-created:
-    - database/migrations/2020_04_14_054826_create_tickets_table.php
-    - database/migrations/2020_04_14_054827_create_comments_table.php
-    - database/migrations/2020_04_14_054828_create_notes_table.php
-    - database/migrations/2020_04_14_054829_create_feedback_table.php
-    - app/Ticket.php
-    - app/Comment.php
-    - app/Note.php
-    - app/Feedback.php
-    - database/factories/TicketFactory.php
-    - database/factories/CommentFactory.php
-    - database/factories/NoteFactory.php
-    - database/factories/FeedbackFactory.php
-    - app/Http/Controllers/TicketController.php
-    - app/Http/Controllers/Api/CommentController.php
-    - app/Http/Controllers/Api/NoteController.php
-    - app/Http/Controllers/Api/FeedbackController.php
-    - app/Http/Requests/TicketStoreRequest.php
-    - app/Http/Requests/TicketUpdateRequest.php
-    - app/Http/Requests/Api/CommentStoreRequest.php
-    - app/Http/Requests/Api/NoteStoreRequest.php
-    - app/Http/Requests/Api/FeedbackStoreRequest.php
-    - resources/views/ticket/index.blade.php
-    - resources/views/ticket/create.blade.php
-    - resources/views/ticket/show.blade.php
-    - resources/views/ticket/edit.blade.php
-    - tests/Feature/Http/Controllers/TicketControllerTest.php
-    - tests/Feature/Http/Controllers/Api/CommentControllerTest.php
-    - tests/Feature/Http/Controllers/Api/NoteControllerTest.php
-    - tests/Feature/Http/Controllers/Api/FeedbackControllerTest.php
-updated:
-    - routes/web.php
+created: 'app/Http/Controllers/FeedbackController.php app/Http/Controllers/AuthLogController.php app/Http/Controllers/MessageController.php app/Http/Controllers/UploadController.php app/Http/Controllers/LoggerController.php database/factories/FeedbackFactory.php database/factories/AuthLogFactory.php database/factories/MessageFactory.php database/factories/UploadFactory.php database/factories/LoggerFactory.php database/migrations/2021_06_30_225646_create_feedback_table.php database/migrations/2021_06_30_225647_create_auth_logs_table.php database/migrations/2021_06_30_225648_create_messages_table.php database/migrations/2021_06_30_225649_create_uploads_table.php database/migrations/2021_06_30_225650_create_loggers_table.php app/Models/Feedback.php app/Models/AuthLog.php app/Models/Message.php app/Models/Upload.php app/Models/Logger.php tests/Feature/Http/Controllers/FeedbackControllerTest.php tests/Feature/Http/Controllers/AuthLogControllerTest.php tests/Feature/Http/Controllers/MessageControllerTest.php tests/Feature/Http/Controllers/UploadControllerTest.php tests/Feature/Http/Controllers/LoggerControllerTest.php app/Http/Requests/FeedbackStoreRequest.php app/Http/Requests/FeedbackUpdateRequest.php app/Http/Requests/AuthLogStoreRequest.php app/Http/Requests/AuthLogUpdateRequest.php app/Http/Requests/MessageStoreRequest.php app/Http/Requests/MessageUpdateRequest.php app/Http/Requests/UploadStoreRequest.php app/Http/Requests/UploadUpdateRequest.php app/Http/Requests/LoggerStoreRequest.php app/Http/Requests/LoggerUpdateRequest.php resources/views/feedback/index.blade.php resources/views/feedback/create.blade.php resources/views/feedback/show.blade.php resources/views/feedback/edit.blade.php resources/views/authLog/index.blade.php resources/views/authLog/create.blade.php resources/views/authLog/show.blade.php resources/views/authLog/edit.blade.php resources/views/message/index.blade.php resources/views/message/create.blade.php resources/views/message/show.blade.php resources/views/message/edit.blade.php resources/views/upload/index.blade.php resources/views/upload/create.blade.php resources/views/upload/show.blade.php resources/views/upload/edit.blade.php resources/views/logger/index.blade.php resources/views/logger/create.blade.php resources/views/logger/show.blade.php resources/views/logger/edit.blade.php'
+updated: routes/web.php
 models:
-    Models\ApiMapper: { uuid: 'string:36', api_code: 'biginteger unsigned', status_code: 'biginteger unsigned', reason: 'text nullable' }
-    Models\BaseModel: {  }
-    Models\Roles\BaseUser: {  }
-    Models\Roles\Internal: { uuid: 'string:36', name: string, email: string, password: string, stripe_id: 'string nullable', card_brand: 'string nullable', card_last_four: 'string:4 nullable', api_token: 'string:80 nullable', remember_token: 'string:100 nullable', email_verified_at: 'datetime nullable', trial_ends_at: 'datetime nullable' }
-    Models\Roles\User: { uuid: 'string:36', name: string, email: string, password: string, api_token: 'string:80 nullable', remember_token: 'string:100 nullable', email_verified_at: 'datetime nullable', stripe_id: 'string nullable', card_brand: 'string nullable', card_last_four: 'string:4 nullable', trial_ends_at: 'datetime nullable', blocked_at: 'datetime nullable' }
-    Models\Roles\Vendor: { uuid: 'string:36', name: string, email: string, password: string, stripe_id: 'string nullable', card_brand: 'string nullable', card_last_four: 'string:4 nullable', api_token: 'string:80 nullable', remember_token: 'string:100 nullable', email_verified_at: 'datetime nullable', trial_ends_at: 'datetime nullable' }
-    Models\Roles\Whitegloves: { uuid: 'string:36', name: string, email: string, password: string, stripe_id: 'string nullable', card_brand: 'string nullable', card_last_four: 'string:4 nullable', api_token: 'string:80 nullable', remember_token: 'string:100 nullable', email_verified_at: 'datetime nullable', trial_ends_at: 'datetime nullable' }
-    Ticket: { ticket_number: 'string:255', subject: 'string:256', body: longtext, owner_id: 'id:Models\Roles\User', softdeletes: softDeletes }
-    Comment: { ticket_id: id, body: longtext }
-    Note: { ticket_id: id, body: longtext, owner_id: 'id:Models\Roles\Internal' }
-    Feedback: { ticket_id: id, body: 'longtext nullable', stars: integer, owner_id: 'id:Models\Roles\User' }
+    AuthLog: { user_id: 'biginteger unsigned', blame_on_user_id: 'biginteger unsigned', ip_address: 'string nullable', session_id: 'string nullable', user_agent: 'text nullable', killed_from_console: 'boolean default:0', logged_out_at: 'datetime nullable' }
+    BaseModel: {  }
+    Employee: { name: string, email: string, phone_number: string, dob: string }
+    Feedback: { id: 'string:36', ticket_id: 'biginteger unsigned', stars: 'string:1' }
+    Internal: { name: string, username: 'string:30', email: string, email_verified_at: 'datetime nullable', salt: 'string:30', password: string, forget_token: 'string:100 nullable', active_token: 'string:100 nullable', blocked_at: 'datetime nullable', remember_token: 'string:100 nullable' }
+    Location: { location_group_id: 'biginteger unsigned nullable', name: string, description: 'string nullable' }
+    LocationGroup: { name: string, description: 'string nullable' }
+    Logger: { method: string, controller: string, action: string, parameter: text, headers: text, origin_ip_address: string, user_id: 'biginteger unsigned' }
+    Machine: { machine_type_id: 'biginteger unsigned', location_id: 'biginteger unsigned nullable', user_id: 'biginteger unsigned nullable', name: string }
+    MachineLog: { machine_id: 'biginteger unsigned', user_id: 'biginteger unsigned', content: text }
+    MachineNote: { machine_id: 'biginteger unsigned', content: text }
+    MachineNoteAttachment: { machine_note_id: 'biginteger unsigned', file_name: 'string:70' }
+    MachineType: { name: 'string:30' }
+    Message: { type: string, from_user_id: 'biginteger unsigned nullable', to_user_id: 'biginteger unsigned nullable', body: text, attachment: 'string nullable', seen: 'boolean default:0' }
+    Software: { name: 'string:140', '`key`': text }
+    SoftwareCategory: { name: 'string:90' }
+    SoftwareInstalled: {  }
+    Ticket: { user_id: 'biginteger unsigned', status_id: 'biginteger unsigned', content: text, '`read`': boolean }
+    TicketAttachment: { ticket_id: 'biginteger unsigned', file_name: 'string:70' }
+    TicketComment: { ticket_id: 'biginteger unsigned', user_id: 'biginteger unsigned', content: text }
+    TicketCommentAttachment: { ticket_comment_id: 'biginteger unsigned', file_name: 'string:70' }
+    TicketLog: { ticket_id: 'biginteger unsigned', user_id: 'biginteger unsigned', content: text }
+    TicketStatus: { name: 'string:40', color: 'string:40' }
+    TicketWorker: { ticket_id: 'biginteger unsigned', user_id: 'biginteger unsigned' }
+    Upload: { filename_uniqid: 'string:36', user_id: 'biginteger unsigned', filename: string, file_attibutes: text, encrypted_at: 'datetime nullable', uploader_ip_address: 'string:45' }
+    User: { name: string, username: 'string:30', email: string, email_verified_at: 'datetime nullable', salt: 'string:30', password: string, api_token: 'string:80 nullable', register_ip: 'string:15', forget_token: 'string:100 nullable', active_token: 'string:100 nullable', blocked_at: 'datetime nullable', remember_token: 'string:100 nullable', stripe_id: 'string nullable', card_brand: 'string nullable', card_last_four: 'string:4 nullable', trial_ends_at: 'datetime nullable' }
+    Vendor: { company_name: string, username: 'string:30', email: string, email_verified_at: 'datetime nullable', salt: 'string:30', password: string, api_token: 'string:80 nullable', register_ip: 'string:15', forget_token: 'string:100 nullable', active_token: 'string:100 nullable', blocked_at: 'datetime nullable', remember_token: 'string:100 nullable' }
+    Whitegloves: { company_name: string, username: 'string:30', email: string, email_verified_at: 'datetime nullable', salt: 'string:30', password: string, api_token: 'string:80 nullable', register_ip: 'string:15', forget_token: 'string:100 nullable', active_token: 'string:100 nullable', blocked_at: 'datetime nullable', remember_token: 'string:100 nullable' }
