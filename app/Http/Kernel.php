@@ -2,13 +2,25 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\ActiveUser;
+use App\Http\Middleware\APIversion;
 use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\AuthLock;
+use App\Http\Middleware\Customer;
 use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\ETag;
+use App\Http\Middleware\Internal;
+use App\Http\Middleware\LastModified;
+use App\Http\Middleware\Local;
+use App\Http\Middleware\LogRequestsWithXRequestId;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
+use App\Http\Middleware\ThrottleSimultaneousRequests;
 use App\Http\Middleware\TrimStrings;
 use App\Http\Middleware\TrustProxies;
+use App\Http\Middleware\Vendor;
 use App\Http\Middleware\VerifyCsrfToken;
+use App\Http\Middleware\WhiteGlove;
 use Fruitcake\Cors\HandleCors;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
@@ -22,8 +34,12 @@ use Illuminate\Http\Middleware\SetCacheHeaders;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Middleware\ValidateSignature;
+use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Spatie\Permission\Middlewares\PermissionMiddleware;
+use Spatie\Permission\Middlewares\RoleMiddleware;
+use Spatie\Permission\Middlewares\RoleOrPermissionMiddleware;
 
 class Kernel extends HttpKernel
 {
@@ -43,6 +59,7 @@ class Kernel extends HttpKernel
         ValidatePostSize::class,
         TrimStrings::class,
         ConvertEmptyStringsToNull::class,
+        ETag::class,
     ];
 
     /**
@@ -55,7 +72,7 @@ class Kernel extends HttpKernel
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
             StartSession::class,
-            // \Illuminate\Session\Middleware\AuthenticateSession::class,
+            AuthenticateSession::class,
             ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             SubstituteBindings::class,
@@ -64,6 +81,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:api',
             SubstituteBindings::class,
+            LogRequestsWithXRequestId::class,
         ],
     ];
 
@@ -75,14 +93,28 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth'             => Authenticate::class,
-        'auth.basic'       => AuthenticateWithBasicAuth::class,
-        'cache.headers'    => SetCacheHeaders::class,
-        'can'              => Authorize::class,
-        'guest'            => RedirectIfAuthenticated::class,
-        'password.confirm' => RequirePassword::class,
-        'signed'           => ValidateSignature::class,
-        'throttle'         => ThrottleRequests::class,
-        'verified'         => EnsureEmailIsVerified::class,
+        'active_user'        => ActiveUser::class,
+        'auth'               => Authenticate::class,
+        'auth.basic'         => AuthenticateWithBasicAuth::class,
+        'cache.headers'      => SetCacheHeaders::class,
+        'can'                => Authorize::class,
+        'customer'           => Customer::class,
+        'guest'              => RedirectIfAuthenticated::class,
+        'password.confirm'   => RequirePassword::class,
+        'signed'             => ValidateSignature::class,
+        'throttle'           => ThrottleRequests::class,
+        'verified'           => EnsureEmailIsVerified::class,
+        'api.version'        => APIversion::class,
+        'auth.lock'          => AuthLock::class,
+        'etag'               => ETag::class,
+        'internal'           => Internal::class,
+        'last_modified'      => LastModified::class,
+        'local'              => Local::class,
+        'permission'         => PermissionMiddleware::class,
+        'role'               => RoleMiddleware::class,
+        'role_or_permission' => RoleOrPermissionMiddleware::class,
+        'simultaneous'       => ThrottleSimultaneousRequests::class,
+        'vendor'             => Vendor::class,
+        'whitegloves'        => WhiteGlove::class,
     ];
 }

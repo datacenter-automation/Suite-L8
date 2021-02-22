@@ -1,0 +1,107 @@
+[
+    {
+        "model-name": "LocationGroup",
+        "resource-file": "location_groups.json",
+        "table-name": "location_groups"
+    },
+    {
+        "model-name": "Machine",
+        "resource-file": "machines.json",
+        "table-name": "machines"
+    },
+    {
+        "model-name": "MachineLog",
+        "resource-file": "machine_logs.json",
+        "table-name": "machine_logs"
+    },
+    {
+        "model-name": "MachineNote",
+        "resource-file": "machine_notes.json",
+        "table-name": "machine_notes"
+    },
+    {
+        "model-name": "MachineNoteAttachment",
+        "resource-file": "machine_note_attachments.json",
+        "table-name": "machine_note_attachments"
+    },
+    {
+        "model-name": "MachineType",
+        "resource-file": "machine_types.json",
+        "table-name": "machine_types"
+    },
+    {
+        "model-name": "Software",
+        "resource-file": "software.json",
+        "table-name": "software"
+    },
+    {
+        "model-name": "SoftwareCategory",
+        "resource-file": "software_categories.json",
+        "table-name": "software_categories"
+    },
+    {
+        "model-name": "SoftwareInstalled",
+        "resource-file": "software_installeds.json",
+        "table-name": "software_installeds"
+    },
+    {
+        "model-name": "Ticket",
+        "resource-file": "tickets.json",
+        "table-name": "tickets"
+    },
+    {
+        "model-name": "TicketAttachment",
+        "resource-file": "ticket_attachments.json",
+        "table-name": "ticket_attachments"
+    },
+    {
+        "model-name": "TicketComment",
+        "resource-file": "ticket_comments.json",
+        "table-name": "ticket_comments"
+    },
+    {
+        "model-name": "TicketCommentAttachment",
+        "resource-file": "ticket_comment_attachments.json",
+        "table-name": "ticket_comment_attachments"
+    },
+    {
+        "model-name": "TicketLog",
+        "resource-file": "ticket_logs.json",
+        "table-name": "ticket_logs"
+    },
+    {
+        "model-name": "TicketStatus",
+        "resource-file": "ticket_statuses.json",
+        "table-name": "ticket_statuses"
+    },
+    {
+        "model-name": "TicketWorker",
+        "resource-file": "ticket_workers.json",
+        "table-name": "ticket_workers"
+    },
+    {
+        "model-name": "Feedback",
+        "resource-file": "feedback.json",
+        "table-name": "feedback"
+    },
+    {
+        "model-name": "AuthLog",
+        "resource-file": "auth_logs.json",
+        "table-name": "auth_logs"
+    },
+    {
+        "model-name": "Message",
+        "resource-file": "messages.json",
+        "table-name": "messages"
+    },
+    {
+        "model-name": "Upload",
+        "resource-file": "uploads.json",
+        "table-name": "uploads"
+    },
+    {
+        "model-name": "Logger",
+        "resource-file": "loggers.json",
+        "table-name": "loggers"
+    }
+]

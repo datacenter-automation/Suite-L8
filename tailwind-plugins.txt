@@ -1,3 +1,0 @@
-        require('tailwindcss-truncate-multiline')(),
-        require('tailwindcss-localized'),
-

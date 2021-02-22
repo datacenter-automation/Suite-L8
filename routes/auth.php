@@ -59,3 +59,8 @@ Route::get('/confirm-password', [
 Route::post('/confirm-password', [ConfirmablePasswordController::class, 'store'])->middleware('auth');
 
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->middleware('auth')->name('logout');
+
+// Distributed Authentication Routes...
+Route::get('/logged-in-devices', 'LoggedInDeviceManager@index')->name('logged-in-devices.list')->middleware('auth');
+Route::get('/logout/all', 'LoggedInDeviceManager@logoutAllDevices')->name('logged-in-devices.logoutAll')->middleware('auth');
+Route::get('/logout/{device_id}', 'LoggedInDeviceManager@logoutDevice')->name('logged-in-devices.logoutSpecific')->middleware('auth');

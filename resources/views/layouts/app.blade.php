@@ -9,12 +9,18 @@
 
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+@livewireStyles
 
-  <!-- Scripts -->
+<!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"></script>
+  <x-laravel-blade-sortable::scripts/>
+
   <script src="{{ mix('js/app.js') }}"></script>
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 <body class="font-sans antialiased" div="app">
 <div class="min-h-screen bg-gray-100">
@@ -32,5 +38,10 @@
     {{ $slot }}
   </main>
 </div>
+
+@stack('scripts')
+
+@livewireScripts
+@livewire('livewire-ui-spotlight')
 </body>
 </html>

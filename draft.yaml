@@ -1,37 +1,270 @@
-models:
-    Ticket:
-        ticket_number: string:255
-        subject: string:256
-        body: longtext
-        owner_id: id:Models\Roles\User
-        softDeletes
-    Comment:
-        ticket_id: id
-        body: longtext
-    Note:
-        ticket_id: id
-        body: longtext
-        owner_id: id:Models\Roles\Internal
-    Feedback:
-        ticket_id: id
-        body: longtext nullable
-        stars: integer
-        owner_id: id:Models\Roles\User
-controllers:
-    Ticket:
-        resource: index, create, store, show, edit, update, destroy
-    Api\Comment:
-        store:
-            validate: ticket_id, body
-            save: comment
-            respond: 204
-    Api\Note:
-        store:
-            validate: ticket_id, body, owner_id
-            save: note
-            respond: 204
-    Api\Feedback:
-        store:
-            validate: ticket_id, body, stars, owner_id
-            save: feedback
-            respond: 204
+# ...
+#models:
+#    Location:
+#        id
+#        location_group_id: id foreign:location_groups nullable
+#        name: string:255 unique index
+#        description: string:255 nullable
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsTo: LocationGroup, Machine
+#
+#    LocationGroup:
+#        id
+#        name: string:255 unique index
+#        description: string:255 nullable
+#        softDeletes
+#        timestamps
+#        relationships:
+#            hasMany:  Location
+#
+#    Machine:
+#        id
+#        machine_type_id: id foreign:machine_types
+#        location_id: id foreign:locations nullable
+#        user_id: id foreign:users nullable
+#        name: string:255
+#        softDeletes
+#        timestamps
+#        relationships:
+#            hasOne: Location, MachineType
+#            hasMany: MachineLog, SoftwareInstalled, MachineNote
+#            belongsTo: User
+#
+#    MachineLog:
+#        id
+#        machine_id: id foreign:machines
+#        user_id: id foreign:users
+#        content: longtext
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsTo: Machine
+#
+#    MachineNote:
+#        id
+#        machine_id: id foreign:machines
+#        content: longtext
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsTo: Machine
+#            hasMany: MachineNoteAttachment
+#
+#    MachineNoteAttachment:
+#        id
+#        machine_note_id: id foreign:machine_notes
+#        file_name: string:70 unique
+#        timestamps
+#        relationships:
+#            belongsTo: MachineNote
+#
+#    MachineType:
+#        id
+#        name: string:30
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsToMany: Machine
+#
+#    Software:
+#        id
+#        name: string:140
+#        key: longtext unique
+#        softDeletes
+#        timestamps
+#        relationships:
+#            hasMany: SoftwareInstalled
+#            hasOne: SoftwareCategory
+#
+#    SoftwareCategory:
+#        id
+#        name: string:90
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsToMany: Software
+#
+#    SoftwareInstalled:
+#        id
+#        software_id: id foreign:softwares
+#        machine_id: id foreign:machines
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsTo: Machine
+#            belongsToMany: Software
+#
+#    Ticket:
+#        id
+#        user_id: id foreign:users
+#        status_id: id foreign:ticket_statuses
+#        content: longtext
+#        read: tinyinteger
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsTo: User
+#            hasMany: TicketAttachment, TicketComment, TicketLog
+#            hasOne: TicketStatus, TicketWorker
+#
+#    TicketAttachment:
+#        id
+#        ticket_id: id foreign:tickets
+#        file_name: string:70 unique
+#        timestamps
+#        relationships:
+#            belongsTo: Ticket
+#
+#    TicketComment:
+#        id
+#        ticket_id: id foreign:tickets
+#        user_id: id foreign:users
+#        content: longtext
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsTo: Ticket
+#            hasMany: TicketCommentAttachment
+#
+#    TicketCommentAttachment:
+#        id
+#        ticket_comment_id: id foreign:ticket_comments
+#        file_name: string:70 unique
+#        timestamps
+#        relationships:
+#            belongsTo: TicketComment
+#
+#    TicketLog:
+#        id
+#        ticket_id: id foreign:tickets
+#        user_id: id foreign:users
+#        content: longtext
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsTo: Ticket
+#
+#    TicketStatus:
+#        id
+#        name: string:40
+#        color: string:40
+#        timestamps
+#        relationships:
+#            belongsToMany: Ticket
+#
+#    TicketWorker:
+#        id
+#        ticket_id: id foreign:tickets
+#        user_id: id foreign:users
+#        softDeletes
+#        timestamps
+#        relationships:
+#            belongsToMany: Ticket
+#    Feedback:
+#        uuid
+#        ticket_id: id foreign:tickets
+#        stars: enum:1,2,3,4,5
+#        timestamps
+#        relationships:
+#            belongsTo: Ticket
+#
+#    AuthLog:
+#        id
+#        user_id: id index foreign:users
+#        blame_on_user_id: id index foreign:users integer nullable
+#        ip_address: string:255 nullable
+#        session_id: string:255 nullable index
+#        user_agent: text nullable
+#        killed_from_console: boolean default:false
+#        logged_out_at: timestamp nullable
+#        timestamps
+#        relationships:
+#            belongsTo: User
+#
+#    Message:
+#        id
+#        type: string
+#        from_user_id: id foreign:users nullable
+#        to_user_id: id foreign:users nullable
+#        body: text
+#        attachment: string nullable
+#        seen: boolean default:false
+#        softDeletes
+#        timestamps
+#
+#    Upload:
+#        id
+#        filename_uniqid: uuid unique
+#        user_id: id foreign:users
+#        filename: string
+#        file_attibutes: json
+#        encrypted_at: timestamp nullable
+#        uploader_ip_address: ipaddress
+#        softDeletes
+#        timestamps
+#
+#    Logger:
+#        id
+#        method: string
+#        controller: string
+#        action: string
+#        parameter: json
+#        headers: json
+#        origin_ip_address: string
+#        user_id: id foreign:users
+#        timestamps
+#
+#    User:
+#        relationships:
+#            hasMany: Machine, Ticket
+#
+#controllers:
+#    # ...
+#    Location:
+#        resource
+#    LocationGroup:
+#        resource
+#    Machine:
+#        resource
+#    MachineLog:
+#        resource
+#    MachineNote:
+#        resource
+#    MachineNoteAttachment:
+#        resource
+#    MachineType:
+#        resource
+#    Software:
+#        resource
+#    SoftwareCategory:
+#        resource
+#    SoftwareInstalled:
+#        resource
+#    Ticket:
+#        resource
+#    TicketAttachment:
+#        resource
+#    TicketComment:
+#        resource
+#    TicketCommentAttachment:
+#        resource
+#    TicketLog:
+#        resource
+#    TicketStatus:
+#        resource
+#    TicketWorker:
+#        resource
+#    Feedback:
+#        resource
+#    AuthLog:
+#        resource
+#    Message:
+#        resource
+#    Upload:
+#        resource
+#    Logger:
+#        resource
+
+#seeders: Location, LocationGroup, MachineType, SoftwareCategory, TicketStatus

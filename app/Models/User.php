@@ -2,64 +2,17 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Prunable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Cashier\Billable;
-use Laravel\Scout\Searchable;
+use Illuminate\Support\Str;
 use Spatie\Permission\Traits\HasRoles;
 
-/**
- * App\Models\User
- *
- * @property int                                                                                                            $id
- * @property string                                                                                                         $name
- * @property string                                                                                                         $email
- * @property \Illuminate\Support\Carbon|null                                                                                $email_verified_at
- * @property string                                                                                                         $password
- * @property string|null                                                                                                    $two_factor_secret
- * @property string|null                                                                                                    $two_factor_recovery_codes
- * @property string|null                                                                                                    $remember_token
- * @property \Illuminate\Support\Carbon|null                                                                                $created_at
- * @property \Illuminate\Support\Carbon|null                                                                                $updated_at
- * @property string|null                                                                                                    $stripe_id
- * @property string|null                                                                                                    $card_brand
- * @property string|null                                                                                                    $card_last_four
- * @property string|null                                                                                                    $trial_ends_at
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection|\Illuminate\Notifications\DatabaseNotification[] $notifications
- * @property-read int|null                                                                                                  $notifications_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Laravel\Cashier\Subscription[]                                  $subscriptions
- * @property-read int|null                                                                                                  $subscriptions_count
- * @method static Builder|User newModelQuery()
- * @method static Builder|User newQuery()
- * @method static Builder|User query()
- * @method static Builder|User whereCardBrand($value)
- * @method static Builder|User whereCardLastFour($value)
- * @method static Builder|User whereCreatedAt($value)
- * @method static Builder|User whereEmail($value)
- * @method static Builder|User whereEmailVerifiedAt($value)
- * @method static Builder|User whereId($value)
- * @method static Builder|User whereName($value)
- * @method static Builder|User wherePassword($value)
- * @method static Builder|User whereRememberToken($value)
- * @method static Builder|User whereStripeId($value)
- * @method static Builder|User whereTrialEndsAt($value)
- * @method static Builder|User whereTwoFactorRecoveryCodes($value)
- * @method static Builder|User whereTwoFactorSecret($value)
- * @method static Builder|User whereUpdatedAt($value)
- * @mixin \Eloquent
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Permission[]                           $permissions
- * @property-read int|null                                                                                                  $permissions_count
- * @property-read \Illuminate\Database\Eloquent\Collection|\Spatie\Permission\Models\Role[]                                 $roles
- * @property-read int|null                                                                                                  $roles_count
- * @method static Builder|User permission($permissions)
- * @method static Builder|User role($roles, $guard = null)
- */
 class User extends Authenticatable
 {
 
-    use Billable, HasFactory, HasRoles, Notifiable, Searchable;
+    use HasFactory, HasRoles, Notifiable, Prunable;
 
     /**
      * The attributes that are mass assignable.
@@ -73,6 +26,16 @@ class User extends Authenticatable
     ];
 
     /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id'                => 'integer',
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
@@ -83,31 +46,44 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast to native types.
+     * The "booted" method of the model.
      *
-     * @var array
+     * @return void
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
-
-    /**
-     * Get the value used to index the model.
-     *
-     * @return mixed
-     */
-    public function getScoutKey()
+    protected static function booted()
     {
-        return $this->email;
+        static::creating(function ($model) {
+            $name = explode(' ', strtolower($model->name));
+
+            $model->register_ip = request()->ip();
+            $model->salt = Str::random(30);
+            $model->username = $name[0][0] . $name[1];
+        });
     }
 
     /**
-     * Get the key name used to index the model.
+     * Determines the prunable query.
      *
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function getScoutKeyName()
+    public function prunable()
     {
-        return 'email';
+        return $this->where('created_at', '<=', now()->subMonths(3));
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function machines(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\Machine::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tickets(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(\App\Models\Ticket::class);
     }
 }
